@@ -56,10 +56,9 @@ ggplot(d, aes(year)) +
 Reusable line plot:
 
 ```{r}
-
 d$decennium = floor(d$year / 10) * 10
 foods <- c("coffee", "tea", "pancake", "ice cream", "french frie",
-           "french peas", "apple", "banana", "strawberry")
+           "french peas", "apple", "banana", "strawberry", "pizza", "buffalo wings", "chicken wings", "mozzarella", "spaghetti", "chicken parmigiana", "flounder", "quiche")
 # Above I dropped the "d" in French fries in order to also match 
 #"French fried potatoes." Also, thanks to @patternproject, I added \\b 
 # in front of the regexp below which requires the food words to start with
@@ -101,6 +100,22 @@ French fries vs. pancake
 food_over_time %>% filter(food %in% c("french frie", "pancake")) %>%
   ggplot(aes(decennium, prop_food, color = food)) + food_time_plot
 ```
+```{r}
+
+food_over_time %>% filter(food %in% c("chicken wings", "flounder")) %>%
+  ggplot(aes(decennium, prop_food, color = food)) + food_time_plot
+```
+```{r}
+
+food_over_time %>% filter(food %in% c("quiche", "spaghetti")) %>%
+  ggplot(aes(decennium, prop_food, color = food)) + food_time_plot
+```
+```{r}
+
+food_over_time %>% filter(food %in% c("mozzarella", "chicken parmigiana")) %>%
+  ggplot(aes(decennium, prop_food, color = food)) + food_time_plot
+```
+
 
 Add a new chunk by clicking the *Insert Chunk* button on the toolbar or by pressing *Cmd+Option+I*.
 
