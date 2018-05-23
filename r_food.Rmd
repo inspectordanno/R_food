@@ -65,7 +65,7 @@ foods <- c("coffee", "tea", "pancake", "ice cream", "french frie",
 # a word boundary, removing the situation where tea matches to, e.g., steak.
 food_over_time <- map_df(foods, function(food) {
   d %>%
-    filter(year >= 1900 & year <= 1980) %>%
+    filter(year >= 1900 & year <= 1980  & location == "Waldorf Astoria") %>%
     group_by(decennium, menu_id) %>%
     summarise(contains_food =
       any(str_detect(dish_name, regex(paste0("\\b", food), ignore_case = TRUE)),
